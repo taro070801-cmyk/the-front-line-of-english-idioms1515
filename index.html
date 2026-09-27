@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>英熟語最前線1515</title>
+  <style>
+    :root {
+      --primary-blue: #0066c0;
+      --dark-blue: #004080;
+      --accent-orange: #ff9900;
+      --accent-yellow: #ffcc00;
+      --bg-light: #f4f7fa;
+      --text-dark: #222222;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ヘッダーデザイン（表紙の上部〜中央イメージ） */
+    header {
+      background-color: var(--white);
+      border-bottom: 5px solid var(--primary-blue);
+      padding: 24px 16px 16px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .sub-title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: var(--primary-blue);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .main-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--primary-blue);
+      line-height: 1.2;
+    }
+
+    .title-large {
+      font-size: 2.4rem;
+      color: var(--primary-blue);
+      letter-spacing: 1px;
+    }
+
+    .number-tag {
+      display: inline-block;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      margin-top: 4px;
+    }
+
+    .banner-blue {
+      background-color: var(--primary-blue);
+      color: var(--white);
+      padding: 12px;
+      margin-top: 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .banner-highlight {
+      color: var(--accent-yellow);
+      font-size: 1.1rem;
+    }
+
+    /* メインコンテンツ領域 */
+    container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px;
+      width: 100%;
+      flex: 1;
+    }
+
+    /* アコーディオン・Partカード */
+    .part-card {
+      background: var(--white);
+      border: 1px solid #e0e0e0;
+      border-left: 6px solid var(--primary-blue);
+      border-radius: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .part-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .part-header {
+      padding: 16px 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--white);
+      user-select: none;
+    }
+
+    .part-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .part-badge {
+      display: inline-block;
+      background-color: var(--primary-blue);
+      color: var(--white);
+      font-size: 0.75rem;
+      font-weight: bold;
+      padding: 2px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .part-name {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--text-dark);
+    }
+
+    .part-count {
+      font-size: 0.85rem;
+      color: var(--accent-orange);
+      font-weight: bold;
+    }
+
+    .toggle-icon {
+      font-size: 1.2rem;
+      color: var(--primary-blue);
+      transition: transform 0.3s;
+    }
+
+    .part-card.active .toggle-icon {
+      transform: rotate(180deg);
+    }
+
+    /* Group / Section リスト */
+    .section-list {
+      display: none;
+      background-color: #fafbfc;
+      border-top: 1px solid #eeeeee;
+      padding: 12px 20px;
+    }
+
+    .part-card.active .section-list {
+      display: block;
+    }
+
+    .section-item {
+      padding: 10px 12px;
+      margin: 6px 0;
+      background: var(--white);
+      border: 1px solid #e6e6e6;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    .section-item:hover {
+      background-color: #f0f7ff;
+      border-color: var(--primary-blue);
+    }
+
+    .btn-study {
+      background-color: var(--accent-orange);
+      color: var(--white);
+      border: none;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      padding: 16px;
+      font-size: 0.8rem;
+      color: #666;
+      background-color: #eef2f5;
+      border-top: 1px solid #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 表紙イメージのヘッダー -->
+  <header>
+    <div class="sub-title">大学入試</div>
+    <div class="main-title">英熟語<span class="title-large">最前線</span></div>
+    <div class="number-tag">1515</div>
+    <div class="banner-blue">
+      イディオム ＋ <span class="banner-highlight">比喩・ことわざ・口語表現</span>
+    </div>
+  </header>
+
+  <!-- 学習コンテンツ領域 -->
+  <container id="app-content">
+    <!-- JSで各Partを動的に表示します -->
+  </container>
+
+  <footer>
+    The Front Line of English Idioms 1515 - Web App
+  </footer>
+
+  <script>
+    // 熟語データの定義
+    const idiomsData = [
+      {
+        part: "Part 1",
+        title: "最頻出の慣用表現グループ",
+        count: 375,
+        type: "Group",
+        items: [
+          "Group1 自動詞＋前置詞＋A",
+          "Group2 (1)他動詞＋前置詞＋B (2)他動詞＋A＋from＋doing<妨害> (3)他動詞＋A＋from＋B<区別> (4)他動詞＋A＋of＋B<伝達> (5)他動詞＋A＋of＋B<分離・略奪> (6)他動詞＋A＋of＋B<要求> (7)他動詞＋A＋for＋B<称賛・非難> (8)他動詞＋A＋into＋B<変化> (9)他動詞＋A＋as＋B<思考・認識>",
+          "Group3 go＋形容詞",
+          "Group4 他動詞＋A＋to do",
+          "Group5 by以外の前置詞を用いる受動態",
+          "Group6 to doingとなる慣用表現",
+          "Group7 (in) doing をとる慣用表現",
+          "Group8 動名詞を用いた慣用表現",
+          "Group9 不定詞を用いた慣用表現",
+          "Group10 独立不定詞",
+          "Group11 慣用的な分詞構文",
+          "Group12 whatを用いた慣用表現",
+          "Group13 so/suchを用いた慣用表現",
+          "Group14 同等比較を用いた慣用表現",
+          "Group15 ラテン比較級など",
+          "Group16 no more than などの慣用表現",
+          "Group17 比較を用いた慣用表現",
+          "Group18 最上級を用いた慣用表現",
+          "Group19 itを用いた重要構文",
+          "Group20 形式目的語を用いた慣用表現",
+          "Group21 強意の否定表現",
+          "Group22 否定語を含まない否定表現",
+          "Group23 省略を用いた慣用表現",
+          "Group24 複数形を用いた重要表現",
+          "Group25 one/another/other/othersなどを用いた慣用表現",
+          "Group26 再帰代名詞(-self/-selves)を用いた慣用表現",
+          "Group27 他動詞＋A＋前置詞＋the＋身体の部位",
+          "Group28 群前置詞"
+        ]
+      },
+      {
+        part: "Part 2",
+        title: "最頻出の基本熟語",
+        count: null,
+        type: "Section",
+        items: [
+          "Section 1 自動詞+前置詞+A",
+          "Section 2 他動詞＋A＋前置詞＋B",
+          "Section 3 3語以上の動詞句",
+          "Section 4 be +形容詞+前置詞+A",
+          "Section 5 前置詞＋A",
+          "Section 6 群前置詞",
+          "Section 7 副詞句を中心とした熟語",
+          "Section 8 動詞を中心とした熟語"
+        ]
+      },
+      {
+        part: "Part 3",
+        title: "読解で狙われる重要熟語（1義）",
+        count: 394,
+        type: "Section",
+        items: [
+          "Section 1 自動詞+前置詞＋A",
+          "Section 2 他動詞＋A+前置詞＋B",
+          "Section 3 3語以上の動詞句",
+          "Section 4 be +形容詞＋前置詞＋A",
+          "Section 5 前置詞＋A",
+          "Section 6 群前置詞",
+          "Section 7 副詞句を中心とした熟語",
+          "Section 8 動詞を中心とした熟語",
+          "Section 9 その他の慣用表現および構文"
+        ]
+      },
+      {
+        part: "Part 4",
+        title: "読解で狙われる重要熟語（多義）",
+        count: null,
+        type: "Section",
+        items: [
+          "Section 1 自動詞＋前置詞＋A",
+          "Section 2 他動詞＋A＋前置詞＋B",
+          "Section 3 3語以上の動詞句",
+          "Section 4 be +形容詞+前置詞＋A",
+          "Section 5 前置詞＋A",
+          "Section 6 群前置詞",
+          "Section 7 副詞句を中心とした熟語",
+          "Section 8 動詞を中心とした熟語"
+        ]
+      },
+      {
+        part: "Part 5",
+        title: "難関大を突破する最前線の熟語",
+        count: 127,
+        type: "Section",
+        items: [
+          "Section 1 自動詞＋前置詞＋A",
+          "Section 2 他動詞＋A+前置詞＋B",
+          "Section 3 3語以上の動詞句",
+          "Section 4 be +形容詞＋前置詞＋A",
+          "Section 5 前置詞+A",
+          "Section 6 群前置詞",
+          "Section 7 副詞句を中心とした熟語",
+          "Section 8 動詞を中心とした熟語"
+        ]
+      },
+      {
+        part: "Part 6",
+        title: "難関大を突破する比喩表現",
+        count: null,
+        type: "Section",
+        items: [
+          "Section 1 必出の比喩表現",
+          "Section 2 ここで差がつく慣用表現",
+          "Section 3 名詞中心の比喩表現",
+          "Section 4 口語・読解で狙われる決まり文句"
+        ]
+      },
+      {
+        part: "Part 7",
+        title: "合否を分けることわざ・名言",
+        count: 99,
+        type: "Section",
+        items: [
+          "Section 1 作文で狙われる金言・名句",
+          "Section 2 知恵の宝庫",
+          "Section 3 長文に見える教訓・戒め",
+          "Section 4 先人たちに学ぶ格言・成句"
+        ]
+      },
+      {
+        part: "Part 8",
+        title: "合否を分ける口語表現",
+        count: 149,
+        type: "Section",
+        items: [
+          "Section 1 出会い・応対・別れ",
+          "Section 2 感嘆・激励・感情",
+          "Section 3 相づち・つなぎ・応答",
+          "Section 4 依頼・勧誘・提案",
+          "Section 5 案内・乗り物・場所",
+          "Section 6 買い物・食事・レストラン",
+          "Section 7 健康・体調・病気",
+          "Section 8 その他"
+        ]
+      }
+    ];
+
+    // レンダリング処理
+    const appContent = document.getElementById('app-content');
+
+    idiomsData.forEach((data, index) => {
+      const card = document.createElement('div');
+      card.className = 'part-card';
+
+      const countText = data.count ? `（${data.count}）` : '';
+
+      card.innerHTML = `
+        <div class="part-header" onclick="togglePart(${index})">
+          <div class="part-title-group">
+            <span class="part-badge">${data.part}</span>
+            <div class="part-name">${data.title} <span class="part-count">${countText}</span></div>
+          </div>
+          <span class="toggle-icon" id="icon-${index}">▼</span>
+        </div>
+        <div class="section-list" id="list-${index}">
+          ${data.items.map(item => `
+            <div class="section-item" onclick="startStudy('${item}')">
+              <span>${item}</span>
+              <button class="btn-study">学習</button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      appContent.appendChild(card);
+    });
+
+    // アコーディオン開閉
+    function togglePart(index) {
+      const cards = document.querySelectorAll('.part-card');
+      cards[index].classList.toggle('active');
+    }
+
+    // 学習ボタン処理（拡張用）
+    function startStudy(itemName) {
+      alert(`「${itemName}」の学習画面へ進みます（データ連携用）`);
+    }
+  </script>
+</body>
+</html>
