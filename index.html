@@ -1,421 +1,1014 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>英熟語最前線1515</title>
-  <style>
-    :root {
-      --primary-blue: #0066c0;
-      --dark-blue: #004080;
-      --accent-orange: #ff9900;
-      --accent-yellow: #ffcc00;
-      --bg-light: #f4f7fa;
-      --text-dark: #222222;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-    }
-
-    body {
-      background-color: var(--bg-light);
-      color: var(--text-dark);
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    /* ヘッダーデザイン（表紙の上部〜中央イメージ） */
-    header {
-      background-color: var(--white);
-      border-bottom: 5px solid var(--primary-blue);
-      padding: 24px 16px 16px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
-
-    .sub-title {
-      font-size: 0.9rem;
-      font-weight: bold;
-      color: var(--primary-blue);
-      letter-spacing: 2px;
-      margin-bottom: 4px;
-    }
-
-    .main-title {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--primary-blue);
-      line-height: 1.2;
-    }
-
-    .title-large {
-      font-size: 2.4rem;
-      color: var(--primary-blue);
-      letter-spacing: 1px;
-    }
-
-    .number-tag {
-      display: inline-block;
-      font-size: 2.2rem;
-      font-weight: 900;
-      color: var(--text-dark);
-      margin-top: 4px;
-    }
-
-    .banner-blue {
-      background-color: var(--primary-blue);
-      color: var(--white);
-      padding: 12px;
-      margin-top: 16px;
-      border-radius: 6px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    .banner-highlight {
-      color: var(--accent-yellow);
-      font-size: 1.1rem;
-    }
-
-    /* メインコンテンツ領域 */
-    container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 20px 16px;
-      width: 100%;
-      flex: 1;
-    }
-
-    /* アコーディオン・Partカード */
-    .part-card {
-      background: var(--white);
-      border: 1px solid #e0e0e0;
-      border-left: 6px solid var(--primary-blue);
-      border-radius: 8px;
-      margin-bottom: 16px;
-      overflow: hidden;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .part-card:hover {
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    .part-header {
-      padding: 16px 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: var(--white);
-      user-select: none;
-    }
-
-    .part-title-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .part-badge {
-      display: inline-block;
-      background-color: var(--primary-blue);
-      color: var(--white);
-      font-size: 0.75rem;
-      font-weight: bold;
-      padding: 2px 8px;
-      border-radius: 4px;
-      width: fit-content;
-    }
-
-    .part-name {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: var(--text-dark);
-    }
-
-    .part-count {
-      font-size: 0.85rem;
-      color: var(--accent-orange);
-      font-weight: bold;
-    }
-
-    .toggle-icon {
-      font-size: 1.2rem;
-      color: var(--primary-blue);
-      transition: transform 0.3s;
-    }
-
-    .part-card.active .toggle-icon {
-      transform: rotate(180deg);
-    }
-
-    /* Group / Section リスト */
-    .section-list {
-      display: none;
-      background-color: #fafbfc;
-      border-top: 1px solid #eeeeee;
-      padding: 12px 20px;
-    }
-
-    .part-card.active .section-list {
-      display: block;
-    }
-
-    .section-item {
-      padding: 10px 12px;
-      margin: 6px 0;
-      background: var(--white);
-      border: 1px solid #e6e6e6;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      transition: background-color 0.2s, border-color 0.2s;
-    }
-
-    .section-item:hover {
-      background-color: #f0f7ff;
-      border-color: var(--primary-blue);
-    }
-
-    .btn-study {
-      background-color: var(--accent-orange);
-      color: var(--white);
-      border: none;
-      padding: 4px 12px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: bold;
-    }
-
-    /* フッター */
-    footer {
-      text-align: center;
-      padding: 16px;
-      font-size: 0.8rem;
-      color: #666;
-      background-color: #eef2f5;
-      border-top: 1px solid #e0e0e0;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大学入試 英熟語最前線 1515</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        academic: {
+                            blue: '#005BAA',
+                            darkblue: '#003F77',
+                            lightblue: '#EBF4FB',
+                            accent: '#E63946',
+                            accentOrange: '#FF6B35',
+                            gold: '#FFB703',
+                            graybg: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-3d {
+            transform-style: preserve-3d;
+        }
+        .backface-hidden {
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-academic-graybg min-h-screen text-slate-800 font-sans flex flex-col selection:bg-academic-blue selection:text-white">
 
-  <!-- 表紙イメージのヘッダー -->
-  <header>
-    <div class="sub-title">大学入試</div>
-    <div class="main-title">英熟語<span class="title-large">最前線</span></div>
-    <div class="number-tag">1515</div>
-    <div class="banner-blue">
-      イディオム ＋ <span class="banner-highlight">比喩・ことわざ・口語表現</span>
-    </div>
-  </header>
-
-  <!-- 学習コンテンツ領域 -->
-  <container id="app-content">
-    <!-- JSで各Partを動的に表示します -->
-  </container>
-
-  <footer>
-    The Front Line of English Idioms 1515 - Web App
-  </footer>
-
-  <script>
-    // 熟語データの定義
-    const idiomsData = [
-      {
-        part: "Part 1",
-        title: "最頻出の慣用表現グループ",
-        count: 375,
-        type: "Group",
-        items: [
-          "Group1 自動詞＋前置詞＋A",
-          "Group2 (1)他動詞＋前置詞＋B (2)他動詞＋A＋from＋doing<妨害> (3)他動詞＋A＋from＋B<区別> (4)他動詞＋A＋of＋B<伝達> (5)他動詞＋A＋of＋B<分離・略奪> (6)他動詞＋A＋of＋B<要求> (7)他動詞＋A＋for＋B<称賛・非難> (8)他動詞＋A＋into＋B<変化> (9)他動詞＋A＋as＋B<思考・認識>",
-          "Group3 go＋形容詞",
-          "Group4 他動詞＋A＋to do",
-          "Group5 by以外の前置詞を用いる受動態",
-          "Group6 to doingとなる慣用表現",
-          "Group7 (in) doing をとる慣用表現",
-          "Group8 動名詞を用いた慣用表現",
-          "Group9 不定詞を用いた慣用表現",
-          "Group10 独立不定詞",
-          "Group11 慣用的な分詞構文",
-          "Group12 whatを用いた慣用表現",
-          "Group13 so/suchを用いた慣用表現",
-          "Group14 同等比較を用いた慣用表現",
-          "Group15 ラテン比較級など",
-          "Group16 no more than などの慣用表現",
-          "Group17 比較を用いた慣用表現",
-          "Group18 最上級を用いた慣用表現",
-          "Group19 itを用いた重要構文",
-          "Group20 形式目的語を用いた慣用表現",
-          "Group21 強意の否定表現",
-          "Group22 否定語を含まない否定表現",
-          "Group23 省略を用いた慣用表現",
-          "Group24 複数形を用いた重要表現",
-          "Group25 one/another/other/othersなどを用いた慣用表現",
-          "Group26 再帰代名詞(-self/-selves)を用いた慣用表現",
-          "Group27 他動詞＋A＋前置詞＋the＋身体の部位",
-          "Group28 群前置詞"
-        ]
-      },
-      {
-        part: "Part 2",
-        title: "最頻出の基本熟語",
-        count: null,
-        type: "Section",
-        items: [
-          "Section 1 自動詞+前置詞+A",
-          "Section 2 他動詞＋A＋前置詞＋B",
-          "Section 3 3語以上の動詞句",
-          "Section 4 be +形容詞+前置詞+A",
-          "Section 5 前置詞＋A",
-          "Section 6 群前置詞",
-          "Section 7 副詞句を中心とした熟語",
-          "Section 8 動詞を中心とした熟語"
-        ]
-      },
-      {
-        part: "Part 3",
-        title: "読解で狙われる重要熟語（1義）",
-        count: 394,
-        type: "Section",
-        items: [
-          "Section 1 自動詞+前置詞＋A",
-          "Section 2 他動詞＋A+前置詞＋B",
-          "Section 3 3語以上の動詞句",
-          "Section 4 be +形容詞＋前置詞＋A",
-          "Section 5 前置詞＋A",
-          "Section 6 群前置詞",
-          "Section 7 副詞句を中心とした熟語",
-          "Section 8 動詞を中心とした熟語",
-          "Section 9 その他の慣用表現および構文"
-        ]
-      },
-      {
-        part: "Part 4",
-        title: "読解で狙われる重要熟語（多義）",
-        count: null,
-        type: "Section",
-        items: [
-          "Section 1 自動詞＋前置詞＋A",
-          "Section 2 他動詞＋A＋前置詞＋B",
-          "Section 3 3語以上の動詞句",
-          "Section 4 be +形容詞+前置詞＋A",
-          "Section 5 前置詞＋A",
-          "Section 6 群前置詞",
-          "Section 7 副詞句を中心とした熟語",
-          "Section 8 動詞を中心とした熟語"
-        ]
-      },
-      {
-        part: "Part 5",
-        title: "難関大を突破する最前線の熟語",
-        count: 127,
-        type: "Section",
-        items: [
-          "Section 1 自動詞＋前置詞＋A",
-          "Section 2 他動詞＋A+前置詞＋B",
-          "Section 3 3語以上の動詞句",
-          "Section 4 be +形容詞＋前置詞＋A",
-          "Section 5 前置詞+A",
-          "Section 6 群前置詞",
-          "Section 7 副詞句を中心とした熟語",
-          "Section 8 動詞を中心とした熟語"
-        ]
-      },
-      {
-        part: "Part 6",
-        title: "難関大を突破する比喩表現",
-        count: null,
-        type: "Section",
-        items: [
-          "Section 1 必出の比喩表現",
-          "Section 2 ここで差がつく慣用表現",
-          "Section 3 名詞中心の比喩表現",
-          "Section 4 口語・読解で狙われる決まり文句"
-        ]
-      },
-      {
-        part: "Part 7",
-        title: "合否を分けることわざ・名言",
-        count: 99,
-        type: "Section",
-        items: [
-          "Section 1 作文で狙われる金言・名句",
-          "Section 2 知恵の宝庫",
-          "Section 3 長文に見える教訓・戒め",
-          "Section 4 先人たちに学ぶ格言・成句"
-        ]
-      },
-      {
-        part: "Part 8",
-        title: "合否を分ける口語表現",
-        count: 149,
-        type: "Section",
-        items: [
-          "Section 1 出会い・応対・別れ",
-          "Section 2 感嘆・激励・感情",
-          "Section 3 相づち・つなぎ・応答",
-          "Section 4 依頼・勧誘・提案",
-          "Section 5 案内・乗り物・場所",
-          "Section 6 買い物・食事・レストラン",
-          "Section 7 健康・体調・病気",
-          "Section 8 その他"
-        ]
-      }
-    ];
-
-    // レンダリング処理
-    const appContent = document.getElementById('app-content');
-
-    idiomsData.forEach((data, index) => {
-      const card = document.createElement('div');
-      card.className = 'part-card';
-
-      const countText = data.count ? `（${data.count}）` : '';
-
-      card.innerHTML = `
-        <div class="part-header" onclick="togglePart(${index})">
-          <div class="part-title-group">
-            <span class="part-badge">${data.part}</span>
-            <div class="part-name">${data.title} <span class="part-count">${countText}</span></div>
-          </div>
-          <span class="toggle-icon" id="icon-${index}">▼</span>
-        </div>
-        <div class="section-list" id="list-${index}">
-          ${data.items.map(item => `
-            <div class="section-item" onclick="startStudy('${item}')">
-              <span>${item}</span>
-              <button class="btn-study">学習</button>
+    <!-- Header Component -->
+    <header class="bg-academic-blue text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between">
+            <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('parts')">
+                <div class="w-9 h-9 bg-white text-academic-blue rounded-lg flex items-center justify-center font-black shadow-inner text-xl">
+                    <i class="fa-solid font-bold fa-house"></i>
+                </div>
+                <div>
+                    <div class="text-[10px] tracking-wider uppercase font-bold text-blue-200">大学入試対策 決定版</div>
+                    <h1 class="text-xl md:text-2xl font-black tracking-tight leading-none">英熟語最前線 <span class="text-academic-gold">1515</span></h1>
+                </div>
             </div>
-          `).join('')}
+
+            <!-- Global Progress Mini Bar -->
+            <div class="mt-2 md:mt-0 flex items-center space-x-3 bg-academic-darkblue px-3 py-1.5 rounded-full text-xs border border-blue-400/30">
+                <span class="text-blue-200 font-medium"><i class="fa-solid fa-trophy text-academic-gold mr-1"></i> 全体習得率</span>
+                <div class="w-24 bg-blue-950 rounded-full h-2.5 overflow-hidden">
+                    <div id="headerProgressBar" class="bg-academic-gold h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+                </div>
+                <span id="headerProgressPercent" class="font-bold text-white">0%</span>
+            </div>
         </div>
-      `;
 
-      appContent.appendChild(card);
-    });
+        <!-- Navigation Tabs -->
+        <nav class="bg-academic-darkblue border-t border-blue-800">
+            <div class="max-w-6xl mx-auto px-2 flex overflow-x-auto no-scrollbar">
+                <button onclick="switchTab('parts')" id="tab-parts" class="tab-btn active-tab px-4 py-2.5 text-sm font-bold whitespace-nowrap flex items-center space-x-1.5 border-b-2 border-academic-accent text-white">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span>パート一覧</span>
+                </button>
+                <button onclick="switchTab('flashcard')" id="tab-flashcard" class="tab-btn px-4 py-2.5 text-sm font-bold whitespace-nowrap flex items-center space-x-1.5 border-b-2 border-transparent text-blue-200 hover:text-white">
+                    <i class="fa-solid fa-clone"></i>
+                    <span>暗記カード</span>
+                </button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="tab-btn px-4 py-2.5 text-sm font-bold whitespace-nowrap flex items-center space-x-1.5 border-b-2 border-transparent text-blue-200 hover:text-white">
+                    <i class="fa-solid fa-circle-question"></i>
+                    <span>確認クイズ</span>
+                </button>
+                <button onclick="switchTab('bookmarks')" id="tab-bookmarks" class="tab-btn px-4 py-2.5 text-sm font-bold whitespace-nowrap flex items-center space-x-1.5 border-b-2 border-transparent text-blue-200 hover:text-white">
+                    <i class="fa-solid fa-bookmark"></i>
+                    <span>要復習 (<span id="bookmarkBadgeCount">0</span>)</span>
+                </button>
+                <button onclick="switchTab('search')" id="tab-search" class="tab-btn px-4 py-2.5 text-sm font-bold whitespace-nowrap flex items-center space-x-1.5 border-b-2 border-transparent text-blue-200 hover:text-white">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>熟語検索</span>
+                </button>
+            </div>
+        </nav>
+    </header>
 
-    // アコーディオン開閉
-    function togglePart(index) {
-      const cards = document.querySelectorAll('.part-card');
-      cards[index].classList.toggle('active');
-    }
+    <!-- Main Container -->
+    <main class="flex-grow max-w-6xl w-full mx-auto p-4 md:p-6">
 
-    // 学習ボタン処理（拡張用）
-    function startStudy(itemName) {
-      alert(`「${itemName}」の学習画面へ進みます（データ連携用）`);
-    }
-  </script>
+        <!-- VIEW: Parts Navigation -->
+        <section id="view-parts" class="tab-content space-y-6">
+            <!-- Banner Intro -->
+            <div class="bg-gradient-to-r from-academic-blue to-academic-darkblue rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
+                <div class="absolute right-0 top-0 translate-x-8 -translate-y-8 w-48 h-48 bg-white/5 rounded-full pointer-events-none"></div>
+                <div class="max-w-2xl relative z-10">
+                    <span class="inline-block bg-academic-accent text-white text-xs font-bold px-2.5 py-1 rounded-md mb-2">難関大対策の決定版</span>
+                    <h2 class="text-2xl md:text-3xl font-black mb-2">イディオム＋比喩・ことわざ・口語表現</h2>
+                    <p class="text-blue-100 text-sm md:text-base leading-relaxed">
+                        入試最前線で狙われる全1515の熟語・構文を8つのパートで体系化。各パートを選んでカード暗記・テストを開始しましょう。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Parts Grid -->
+            <div id="partsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                <!-- Javascript dynamic population -->
+            </div>
+        </section>
+
+        <!-- VIEW: Flashcards -->
+        <section id="view-flashcard" class="tab-content hidden space-y-6">
+            <!-- Filter Banner -->
+            <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+                <div class="flex items-center space-x-2">
+                    <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">対象パート:</label>
+                    <select id="flashcardPartSelect" onchange="loadFlashcards()" class="bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-2 font-medium focus:ring-2 focus:ring-academic-blue focus:outline-none">
+                        <option value="all">全パート（ミックス）</option>
+                        <!-- Dynamic options -->
+                    </select>
+                </div>
+                <div class="flex items-center space-x-3 text-xs font-medium text-slate-600">
+                    <span id="flashcardCounter">Card 1 / 0</span>
+                    <button onclick="shuffleFlashcards()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition text-xs font-bold flex items-center space-x-1">
+                        <i class="fa-solid fa-shuffle"></i>
+                        <span>シャッフル</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Flashcard Display -->
+            <div class="max-w-xl mx-auto">
+                <div id="cardContainer" class="perspective-1000 w-full h-80 cursor-pointer" onclick="flipCard()">
+                    <div id="cardInner" class="relative w-full h-full transform-style-3d transition-transform duration-500 rounded-2xl shadow-xl bg-white border border-slate-200">
+                        <!-- Front Surface -->
+                        <div class="absolute inset-0 backface-hidden p-6 flex flex-col justify-between items-center text-center rounded-2xl bg-white">
+                            <div class="w-full flex justify-between items-center text-xs font-bold text-slate-400">
+                                <span id="cardPartBadge" class="bg-blue-50 text-academic-blue px-2.5 py-1 rounded-full border border-blue-100">Part 1</span>
+                                <span class="text-slate-400"><i class="fa-solid fa-rotate mr-1"></i>タップで裏返す</span>
+                            </div>
+
+                            <div class="my-auto space-y-3">
+                                <h3 id="cardFrontIdiom" class="text-3xl md:text-4xl font-black text-slate-900 tracking-wide">
+                                    rely on A
+                                </h3>
+                                <button onclick="event.stopPropagation(); speakText(document.getElementById('cardFrontIdiom').textContent)" class="w-10 h-10 bg-academic-lightblue hover:bg-blue-100 text-academic-blue rounded-full transition flex items-center justify-center mx-auto shadow-sm">
+                                    <i class="fa-solid fa-volume-high text-lg"></i>
+                                </button>
+                            </div>
+
+                            <div class="text-xs text-slate-400 font-medium">
+                                <i class="fa-solid fa-lightbulb text-academic-gold mr-1"></i> クリックで意味と解説を表示
+                            </div>
+                        </div>
+
+                        <!-- Back Surface -->
+                        <div class="absolute inset-0 backface-hidden rotate-y-180 p-6 flex flex-col justify-between rounded-2xl bg-slate-900 text-white">
+                            <div class="w-full flex justify-between items-center text-xs text-slate-400">
+                                <span id="cardGroupBadge" class="bg-slate-800 text-slate-300 px-2.5 py-1 rounded-full">Group 1</span>
+                                <span><i class="fa-solid fa-rotate mr-1"></i>タップで表に戻る</span>
+                            </div>
+
+                            <div class="my-auto space-y-3 text-center">
+                                <div id="cardBackMeaning" class="text-2xl font-bold text-academic-gold">
+                                    Aに頼る、依存する
+                                </div>
+                                <div id="cardBackNotes" class="text-xs text-slate-300 bg-slate-800/80 p-2.5 rounded-lg border border-slate-700 max-h-20 overflow-y-auto custom-scrollbar">
+                                    = depend on A / count on A (言い換え注意)
+                                </div>
+                                <p id="cardBackExample" class="text-xs italic text-blue-200">
+                                    "You can always rely on him in times of trouble."
+                                </p>
+                            </div>
+
+                            <div class="text-[10px] text-slate-500 text-center">
+                                英熟語最前線 1515
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="mt-6 flex items-center justify-between gap-3">
+                    <button onclick="prevCard()" class="px-4 py-3 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-xl border border-slate-200 shadow-sm transition flex items-center space-x-1 text-sm">
+                        <i class="fa-solid fa-chevron-left"></i>
+                        <span>前へ</span>
+                    </button>
+
+                    <div class="flex space-x-2">
+                        <button onclick="markStatus(false)" class="px-5 py-3 bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 font-bold rounded-xl shadow-sm transition flex items-center space-x-1.5 text-sm">
+                            <i class="fa-solid fa-circle-xmark text-lg"></i>
+                            <span>要復習</span>
+                        </button>
+                        <button onclick="markStatus(true)" class="px-5 py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200 font-bold rounded-xl shadow-sm transition flex items-center space-x-1.5 text-sm">
+                            <i class="fa-solid fa-circle-check text-lg"></i>
+                            <span>覚えた</span>
+                        </button>
+                    </div>
+
+                    <button onclick="nextCard()" class="px-4 py-3 bg-white hover:bg-slate-100 text-slate-700 font-bold rounded-xl border border-slate-200 shadow-sm transition flex items-center space-x-1 text-sm">
+                        <span>次へ</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Quiz Mode -->
+        <section id="view-quiz" class="tab-content hidden space-y-6">
+            <!-- Quiz Configuration -->
+            <div id="quizSetupCard" class="max-w-xl mx-auto bg-white rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5">
+                <div class="text-center space-y-1">
+                    <div class="inline-flex p-3 bg-academic-lightblue text-academic-blue rounded-full mb-2">
+                        <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900">熟語力テスト (4択問題)</h3>
+                    <p class="text-xs text-slate-500">出題範囲と形式を選択して挑戦を開始しましょう。</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">出題範囲</label>
+                        <select id="quizPartSelect" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-3 font-medium focus:ring-2 focus:ring-academic-blue focus:outline-none">
+                            <option value="all">全パートからランダム</option>
+                            <!-- Dynamic options -->
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">出題形式</label>
+                        <select id="quizTypeSelect" class="w-full bg-slate-50 border border-slate-300 text-slate-800 text-sm rounded-lg p-3 font-medium focus:ring-2 focus:ring-academic-blue focus:outline-none">
+                            <option value="engToJap">英語 → 日本語</option>
+                            <option value="japToEng">日本語 → 英語</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase mb-1">出題数</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <button onclick="setQuizCount(5)" id="count-5" class="quiz-count-btn active py-2 border rounded-lg text-sm font-bold text-center border-academic-blue bg-blue-50 text-academic-blue">5問</button>
+                            <button onclick="setQuizCount(10)" id="count-10" class="quiz-count-btn py-2 border rounded-lg text-sm font-bold text-center border-slate-200 hover:bg-slate-50 text-slate-600">10問</button>
+                            <button onclick="setQuizCount(20)" id="count-20" class="quiz-count-btn py-2 border rounded-lg text-sm font-bold text-center border-slate-200 hover:bg-slate-50 text-slate-600">20問</button>
+                        </div>
+                    </div>
+                </div>
+
+                <button onclick="startQuiz()" class="w-full py-3.5 bg-academic-accent hover:bg-red-600 text-white font-bold rounded-xl shadow-md transition text-base flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-play"></i>
+                    <span>クイズスタート</span>
+                </button>
+            </div>
+
+            <!-- Quiz Play Area -->
+            <div id="quizPlayArea" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-6 border border-slate-200 shadow-md space-y-6">
+                <div class="flex justify-between items-center text-xs font-bold text-slate-500 border-b pb-3">
+                    <span id="quizProgressText">第 1 / 5 問</span>
+                    <span id="quizScoreText" class="text-academic-blue">スコア: 0</span>
+                </div>
+
+                <div class="space-y-3 text-center">
+                    <span id="quizCategoryTag" class="bg-blue-50 text-academic-blue text-xs font-bold px-2.5 py-1 rounded-full border border-blue-100">Part 1</span>
+                    <h3 id="quizQuestionText" class="text-2xl md:text-3xl font-black text-slate-900 leading-snug">
+                        Question Idiom
+                    </h3>
+                    <button id="quizSpeakBtn" onclick="speakCurrentQuiz()" class="w-8 h-8 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-full inline-flex items-center justify-center text-sm">
+                        <i class="fa-solid fa-volume-high"></i>
+                    </button>
+                </div>
+
+                <div id="quizOptionsContainer" class="grid grid-cols-1 gap-3">
+                    <!-- Dynamic choices -->
+                </div>
+
+                <div id="quizFeedbackArea" class="hidden p-4 rounded-xl text-center font-bold text-sm space-y-2">
+                    <div id="quizFeedbackStatus"></div>
+                    <p id="quizFeedbackDetail" class="text-xs font-normal text-slate-600"></p>
+                    <button id="quizNextBtn" onclick="nextQuizQuestion()" class="mt-2 px-6 py-2 bg-academic-blue text-white rounded-lg hover:bg-academic-darkblue font-bold text-xs transition">
+                        次の問題へ <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Result View -->
+            <div id="quizResultArea" class="hidden max-w-xl mx-auto bg-white rounded-2xl p-8 border border-slate-200 shadow-lg text-center space-y-6">
+                <div class="w-20 h-20 bg-amber-100 text-academic-gold rounded-full flex items-center justify-center mx-auto text-4xl shadow-inner">
+                    <i class="fa-solid fa-trophy"></i>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900">クイズ終了！</h3>
+                    <p id="quizFinalScore" class="text-3xl font-black text-academic-blue mt-2">Score: 5 / 5</p>
+                    <p id="quizComment" class="text-xs text-slate-500 mt-1">素晴らしい成績です！この調子で暗記を進めましょう。</p>
+                </div>
+
+                <div class="pt-4 border-t flex space-x-3">
+                    <button onclick="resetQuizSetup()" class="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition text-sm">
+                        条件を変えて再挑戦
+                    </button>
+                    <button onclick="switchTab('bookmarks')" class="flex-1 py-3 bg-academic-blue hover:bg-academic-darkblue text-white font-bold rounded-xl transition text-sm">
+                        要復習リストを確認
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW: Bookmarks / Review List -->
+        <section id="view-bookmarks" class="tab-content hidden space-y-6">
+            <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">要復習リスト</h3>
+                    <p class="text-xs text-slate-500">「要復習」と判定した熟語やブックマーク一覧です。</p>
+                </div>
+                <button onclick="clearAllBookmarks()" class="px-3.5 py-2 bg-rose-50 hover:bg-rose-100 text-rose-600 rounded-lg font-bold text-xs border border-rose-200 transition">
+                    <i class="fa-solid fa-trash-can mr-1"></i> リストを空にする
+                </button>
+            </div>
+
+            <div id="bookmarkListContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Javascript dynamic population -->
+            </div>
+        </section>
+
+        <!-- VIEW: Search Dictionary -->
+        <section id="view-search" class="tab-content hidden space-y-6">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="filterSearchIdioms()" placeholder="英語または日本語で熟語を検索..." class="w-full pl-11 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-medium focus:ring-2 focus:ring-academic-blue focus:outline-none">
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500 px-1">
+                    <span id="searchResultCount">0 件の熟語が見つかりました</span>
+                    <span>全収録データベースから検索</span>
+                </div>
+            </div>
+
+            <div id="searchResultsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Javascript dynamic search results -->
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        // Comprehensive master structure representing "英熟語最前線 1515"
+        const PARTS_DATA = [
+            {
+                id: 1,
+                title: "Part 1 最頻出の慣用表現グループ",
+                totalCount: 375,
+                desc: "文法・語法的要素の強い慣用表現および構文をレベル分け・類型化して整理。",
+                groups: [
+                    "Group 1 自動詞＋前置詞＋A (21)",
+                    "Group 2 他動詞＋前置詞パターン (81)",
+                    "Group 3 go＋形容詞 (12)",
+                    "Group 4 他動詞＋A＋to do (24)",
+                    "Group 5 by以外の前置詞を用いる受動態 (22)",
+                    "Group 6 to doingとなる慣用表現 (9)",
+                    "Group 7 (in) doing をとる慣用表現 (3)",
+                    "Group 8 動名詞を用いた慣用表現 (7)",
+                    "Group 9 不定詞を用いた慣用表現 (4)",
+                    "Group 10 独立不定詞 (17)",
+                    "Group 11 慣用的な分詞構文 (12)",
+                    "Group 12 whatを用いた慣用表現 (10)",
+                    "Group 13 so/suchを用いた慣用表現 (3)",
+                    "Group 14 同等比較を用いた慣用表現 (11)",
+                    "Group 15 ラテン比較級など (8)",
+                    "Group 16 no more than などの慣用表現 (10)",
+                    "Group 17 比較を用いた慣用表現 (7)",
+                    "Group 18 最上級を用いた慣用表現 (3)",
+                    "Group 19 itを用いた重要構文 (5)",
+                    "Group 20 形式目的語を用いた慣用表現 (4)",
+                    "Group 21 強意の否定表現 (3)",
+                    "Group 22 否定語を含まない否定表現 (6)",
+                    "Group 23 省略を用いた慣用表現 (7)",
+                    "Group 24 複数形を用いた重要表現 (11)",
+                    "Group 25 one/another/otherを用いた慣用表現 (14)",
+                    "Group 26 再帰代名詞(-self)を用いた慣用表現 (11)",
+                    "Group 27 他動詞＋A＋前置詞＋the＋身体の部位 (9)",
+                    "Group 28 群前置詞 (49)"
+                ]
+            },
+            {
+                id: 2,
+                title: "Part 2 最頻出の基本熟語",
+                totalCount: 205,
+                desc: "必修の重要熟語を頻度順で収録。言い換え表現やイコール関係にも注目。",
+                groups: [
+                    "Section 1 自動詞＋前置詞＋A",
+                    "Section 2 他動詞＋A＋前置詞＋B",
+                    "Section 3 3語以上の動詞句",
+                    "Section 4 be＋形容詞＋前置詞＋A",
+                    "Section 5 前置詞＋A",
+                    "Section 6 群前置詞",
+                    "Section 7 副詞句を中心とした熟語",
+                    "Section 8 動詞を中心とした熟語"
+                ]
+            },
+            {
+                id: 3,
+                title: "Part 3 読解で狙われる重要熟語（1義）",
+                totalCount: 394,
+                desc: "読解問題で頻出する「一つの意味しかない熟語」を成り立ちから解説。",
+                groups: [
+                    "Section 1 自動詞＋前置詞＋A",
+                    "Section 2 他動詞＋A＋前置詞＋B",
+                    "Section 3 3語以上の動詞句",
+                    "Section 4 be＋形容詞＋前置詞＋A",
+                    "Section 5 前置詞＋A",
+                    "Section 6 群前置詞",
+                    "Section 7 副詞句を中心とした熟語",
+                    "Section 8 動詞を中心とした熟語",
+                    "Section 9 その他の慣用表現および構文"
+                ]
+            },
+            {
+                id: 4,
+                title: "Part 4 読解で狙われる重要熟語（多義）",
+                totalCount: 150,
+                desc: "複数の重要な意味を持つイディオム。長文読解での見分け方が鍵。",
+                groups: [
+                    "Section 1 自動詞＋前置詞＋A",
+                    "Section 2 他動詞＋A＋前置詞＋B",
+                    "Section 3 3語以上の動詞句",
+                    "Section 4 be＋形容詞＋前置詞＋A",
+                    "Section 5 前置詞＋A",
+                    "Section 6 群前置詞",
+                    "Section 7 副詞句を中心とした熟語",
+                    "Section 8 動詞を中心とした熟語"
+                ]
+            },
+            {
+                id: 5,
+                title: "Part 5 難関大を突破する最前線の熟語",
+                totalCount: 127,
+                desc: "近年の入試傾向を反映した、現在よく使われる最新のハイレベル慣用表現。",
+                groups: [
+                    "Section 1 自動詞＋前置詞＋A",
+                    "Section 2 他動詞＋A＋前置詞＋B",
+                    "Section 3 3語以上の動詞句",
+                    "Section 4 be＋形容詞＋前置詞＋A",
+                    "Section 5 前置詞＋A",
+                    "Section 6 群前置詞",
+                    "Section 7 副詞句を中心とした熟語",
+                    "Section 8 動詞を中心とした熟語"
+                ]
+            },
+            {
+                id: 6,
+                title: "Part 6 難関大を突破する比喩表現",
+                totalCount: 102,
+                desc: "入試問題で差がつく比喩（メタファー）表現にフォーカス。",
+                groups: [
+                    "Section 1 必出の比喩表現",
+                    "Section 2 ここで差がつく慣用表現",
+                    "Section 3 名詞中心の比喩表現",
+                    "Section 4 口語・読解で狙われる決まり文句"
+                ]
+            },
+            {
+                id: 7,
+                title: "Part 7 合否を分けることわざ・名言",
+                totalCount: 99,
+                desc: "京大・阪大などの和文英訳・読解で頻出する格言や金言・名句。",
+                groups: [
+                    "Section 1 作文で狙われる金言・名句",
+                    "Section 2 知恵の宝庫",
+                    "Section 3 長文に見える教訓・戒め",
+                    "Section 4 先人たちに学ぶ格言・成句"
+                ]
+            },
+            {
+                id: 8,
+                title: "Part 8 合否を分ける口語表現",
+                totalCount: 149,
+                desc: "私大・国公立大の会話問題・リスニングで必須の口語フレーズ。",
+                groups: [
+                    "Section 1 出会い・応対・別れ",
+                    "Section 2 感嘆・激励・感情",
+                    "Section 3 相づち・つなぎ・応答",
+                    "Section 4 依頼・勧誘・提案",
+                    "Section 5 案内・乗り物・場所",
+                    "Section 6 買い物・食事・レストラン",
+                    "Section 7 健康・体調・病気",
+                    "Section 8 その他"
+                ]
+            }
+        ];
+
+        // Sample rich database of high-frequency exam idioms populated into each Part
+        const IDIOMS_DB = [
+            // Part 1
+            { id: 1, part: 1, group: "Group 1", idiom: "rely on A", meaning: "Aに頼る、依存する", notes: "= depend on A / count on A", example: "You can always rely on her in an emergency." },
+            { id: 2, part: 1, group: "Group 2", idiom: "prevent A from doing", meaning: "Aが～するのを妨げる", notes: "妨害パターン (<妨害>のfrom)", example: "Bad weather prevented us from leaving." },
+            { id: 3, part: 1, group: "Group 2", idiom: "tell A from B", meaning: "AとBを区別する", notes: "区別のfrom (= distinguish A from B)", example: "It is difficult to tell the twins apart." },
+            { id: 4, part: 1, group: "Group 2", idiom: "rob A of B", meaning: "AからBを奪う", notes: "分離・略奪のof", example: "The thief robbed the lady of her purse." },
+            { id: 5, part: 1, group: "Group 2", idiom: "praise A for B", meaning: "BのことでAを褒める", notes: "称賛・非難のfor", example: "The teacher praised him for his diligence." },
+            { id: 6, part: 1, group: "Group 2", idiom: "regard A as B", meaning: "AをBとみなす", notes: "思考・認識のas (= look upon A as B)", example: "We regard him as our best leader." },
+            { id: 7, part: 1, group: "Group 3", idiom: "go wrong", meaning: "うまくいかない、故障する", notes: "go＋形容詞 (状態の変化)", example: "Something has gone wrong with my laptop." },
+            { id: 8, part: 1, group: "Group 5", idiom: "be known to A", meaning: "A（人）に知られている", notes: "by以外の受動態 (to/for/by/as)", example: "His music is known to young people all over the world." },
+            { id: 9, part: 1, group: "Group 6", idiom: "look forward to doing", meaning: "～するのを楽しみに待つ", notes: "toは前置詞のため動名詞が続く", example: "I am looking forward to seeing you again." },
+            { id: 10, part: 1, group: "Group 10", idiom: "so to speak", meaning: "いわば、言ってみれば", notes: "独立不定詞 (= as it were)", example: "He is, so to speak, a living dictionary." },
+            { id: 11, part: 1, group: "Group 16", idiom: "no more than A", meaning: "わずかAだけ", notes: "= only A (否定を強める慣用表現)", example: "He paid no more than 10 dollars." },
+            { id: 12, part: 1, group: "Group 28", idiom: "by virtue of A", meaning: "Aのおかげで、Aによって", notes: "群前置詞 (= because of A / thanks to A)", example: "She succeeded by virtue of hard work." },
+
+            // Part 2
+            { id: 13, part: 2, group: "Section 1", idiom: "look down on A", meaning: "Aを見下す、軽蔑する", notes: "⇔ look up to A（Aを尊敬する）", example: "Never look down on people who are less fortunate." },
+            { id: 14, part: 2, group: "Section 3", idiom: "put up with A", meaning: "Aを我慢する、耐える", notes: "= tolerate A / bear A", example: "I cannot put up with this noise any longer." },
+            { id: 15, part: 2, group: "Section 4", idiom: "be conscious of A", meaning: "Aを意識している、気づいている", notes: "= be aware of A", example: "She was conscious of someone following her." },
+            { id: 16, part: 2, group: "Section 5", idiom: "on behalf of A", meaning: "Aを代表して、Aのために", notes: "= representing A", example: "He spoke on behalf of all the students." },
+
+            // Part 3
+            { id: 17, part: 3, group: "Section 1", idiom: "attribute A to B", meaning: "AをBのせいにする、帰する", notes: "1義熟語 (Aは結果、Bは原因)", example: "He attributes his success to good luck." },
+            { id: 18, part: 3, group: "Section 3", idiom: "catch up with A", meaning: "Aに追いつく", notes: "= overtake A", example: "Walk faster or we won't catch up with them." },
+            { id: 19, part: 3, group: "Section 6", idiom: "in terms of A", meaning: "Aの観点から、Aの点で", notes: "読解必須の論理マーカー", example: "Think about the problem in terms of cost." },
+
+            // Part 4
+            { id: 20, part: 4, group: "Section 1", idiom: "make out A", meaning: "①理解する ②判読する ③作成する", notes: "【多義熟語】文脈での見分けが重要", example: "I couldn't make out what he was saying." },
+            { id: 21, part: 4, group: "Section 2", idiom: "take in A", meaning: "①理解する ②騙す ③摂取する", notes: "【多義熟語】= comprehend / deceive", example: "Don't be taken in by his promises." },
+
+            // Part 5
+            { id: 22, part: 5, group: "Section 1", idiom: "bridge the gap", meaning: "隔たりを埋める、架け橋となる", notes: "最前線入試テーマ（多様性・対立解消）", example: "Education can bridge the gap between rich and poor." },
+            { id: 23, part: 5, group: "Section 7", idiom: "at the expense of A", meaning: "Aを犠牲にして", notes: "= at the cost of A", example: "He succeeded at the expense of his health." },
+
+            // Part 6
+            { id: 24, part: 6, group: "Section 1", idiom: "burn the midnight oil", meaning: "夜遅くまで勉強・仕事をする", notes: "比喩表現（灯油を燃やすことから）", example: "Students often burn the midnight oil before exams." },
+            { id: 25, part: 6, group: "Section 2", idiom: "bite the bullet", meaning: "痛みをこらえて試練に耐える", notes: "弾丸を噛む＝苦渋の決断", example: "I decided to bite the bullet and tell the truth." },
+
+            // Part 7
+            { id: 26, part: 7, group: "Section 1", idiom: "Kill two birds with one stone.", meaning: "一石二鳥", notes: "京都大・大阪大作文で頻出", example: "Cycling to work kills two birds with one stone." },
+            { id: 27, part: 7, group: "Section 4", idiom: "Better late than never.", meaning: "遅れてもやらないよりはよい", notes: "長文・英作文の格言", example: "You finally arrived! Well, better late than never." },
+
+            // Part 8
+            { id: 28, part: 8, group: "Section 1", idiom: "How come S V?", meaning: "どうして～なのか？", notes: "= Why S V? (語順は直説法)", example: "How come you are so late today?" },
+            { id: 29, part: 8, group: "Section 3", idiom: "You can say that again.", meaning: "全くその通りだ、同感だ", notes: "口語の相づち・対話文で超頻出", example: "“It's freezing outside.” “You can say that again!”" }
+        ];
+
+        // App State
+        let masteredIds = new Set(JSON.parse(localStorage.getItem('frontline_mastered') || '[]'));
+        let bookmarkIds = new Set(JSON.parse(localStorage.getItem('frontline_bookmarks') || '[]'));
+
+        let currentFlashcardList = [];
+        let currentFlashcardIndex = 0;
+        let isCardFlipped = false;
+
+        let currentQuizQuestions = [];
+        let currentQuizIndex = 0;
+        let currentQuizScore = 0;
+        let selectedQuizCount = 5;
+
+        // On Page Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPartsList();
+            populatePartSelects();
+            updateGlobalProgress();
+            loadFlashcards();
+            renderBookmarks();
+            filterSearchIdioms();
+        });
+
+        // Tab Switching Logic
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('border-academic-accent', 'text-white');
+                el.classList.add('border-transparent', 'text-blue-200');
+            });
+
+            const activeContent = document.getElementById(`view-${tabId}`);
+            if (activeContent) activeContent.classList.remove('hidden');
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-blue-200');
+                activeBtn.classList.add('border-academic-accent', 'text-white');
+            }
+
+            if (tabId === 'bookmarks') renderBookmarks();
+            if (tabId === 'search') filterSearchIdioms();
+        }
+
+        function renderPartsList() {
+            const container = document.getElementById('partsContainer');
+            container.innerHTML = PARTS_DATA.map(p => {
+                // Calculate progress
+                const partIdioms = IDIOMS_DB.filter(i => i.part === p.id);
+                const masteredCount = partIdioms.filter(i => masteredIds.has(i.id)).length;
+                const percent = partIdioms.length > 0 ? Math.round((masteredCount / partIdioms.length) * 100) : 0;
+
+                return `
+                    <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="bg-academic-lightblue text-academic-blue text-xs font-black px-2.5 py-1 rounded-md">
+                                    Part ${p.id}
+                                </span>
+                                <span class="text-xs font-bold text-slate-400">収録数: ${p.totalCount} 項目</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-1">${p.title}</h3>
+                            <p class="text-xs text-slate-500 mb-4 leading-relaxed">${p.desc}</p>
+
+                            <div class="space-y-1 mb-4 max-h-28 overflow-y-auto custom-scrollbar bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                                ${p.groups.map(g => `<div class="text-[11px] text-slate-600 font-medium truncate">• ${g}</div>`).join('')}
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center text-xs text-slate-500 font-bold mb-1">
+                                <span>習得度</span>
+                                <span class="text-academic-blue">${percent}%</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2 mb-4 overflow-hidden">
+                                <div class="bg-academic-blue h-2 rounded-full transition-all duration-300" style="width: ${percent}%"></div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-2">
+                                <button onclick="startPartFlashcards(${p.id})" class="py-2.5 bg-academic-lightblue hover:bg-blue-100 text-academic-blue font-bold rounded-xl text-xs transition flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-clone"></i>
+                                    <span>カード暗記</span>
+                                </button>
+                                <button onclick="startPartQuiz(${p.id})" class="py-2.5 bg-academic-accent hover:bg-red-600 text-white font-bold rounded-xl text-xs transition flex items-center justify-center space-x-1">
+                                    <i class="fa-solid fa-circle-question"></i>
+                                    <span>テスト</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function populatePartSelects() {
+            const flashcardSelect = document.getElementById('flashcardPartSelect');
+            const quizSelect = document.getElementById('quizPartSelect');
+
+            const options = PARTS_DATA.map(p => `<option value="${p.id}">${p.title}</option>`).join('');
+
+            flashcardSelect.innerHTML = `<option value="all">全パート（ミックス）</option>` + options;
+            quizSelect.innerHTML = `<option value="all">全パートからランダム</option>` + options;
+        }
+
+        function updateGlobalProgress() {
+            const total = IDIOMS_DB.length;
+            const mastered = masteredIds.size;
+            const percent = total > 0 ? Math.round((mastered / total) * 100) : 0;
+
+            document.getElementById('headerProgressBar').style.width = `${percent}%`;
+            document.getElementById('headerProgressPercent').textContent = `${percent}%`;
+            document.getElementById('bookmarkBadgeCount').textContent = bookmarkIds.size;
+
+            localStorage.setItem('frontline_mastered', JSON.stringify([...masteredIds]));
+            localStorage.setItem('frontline_bookmarks', JSON.stringify([...bookmarkIds]));
+        }
+
+        function startPartFlashcards(partId) {
+            document.getElementById('flashcardPartSelect').value = partId;
+            switchTab('flashcard');
+            loadFlashcards();
+        }
+
+        function loadFlashcards() {
+            const selectedPart = document.getElementById('flashcardPartSelect').value;
+            if (selectedPart === 'all') {
+                currentFlashcardList = [...IDIOMS_DB];
+            } else {
+                currentFlashcardList = IDIOMS_DB.filter(i => i.part === parseInt(selectedPart));
+            }
+
+            currentFlashcardIndex = 0;
+            showFlashcard();
+        }
+
+        function shuffleFlashcards() {
+            for (let i = currentFlashcardList.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentFlashcardList[i], currentFlashcardList[j]] = [currentFlashcardList[j], currentFlashcardList[i]];
+            }
+            currentFlashcardIndex = 0;
+            showFlashcard();
+        }
+
+        function showFlashcard() {
+            if (currentFlashcardList.length === 0) return;
+
+            // Reset card flip
+            const cardInner = document.getElementById('cardInner');
+            cardInner.classList.remove('rotate-y-180');
+            isCardFlipped = false;
+
+            const item = currentFlashcardList[currentFlashcardIndex];
+            document.getElementById('cardPartBadge').textContent = `Part ${item.part}`;
+            document.getElementById('cardGroupBadge').textContent = item.group;
+            document.getElementById('cardFrontIdiom').textContent = item.idiom;
+            document.getElementById('cardBackMeaning').textContent = item.meaning;
+            document.getElementById('cardBackNotes').textContent = item.notes || "";
+            document.getElementById('cardBackExample').textContent = item.example ? `"${item.example}"` : "";
+
+            document.getElementById('flashcardCounter').textContent = `Card ${currentFlashcardIndex + 1} / ${currentFlashcardList.length}`;
+        }
+
+        function flipCard() {
+            const cardInner = document.getElementById('cardInner');
+            isCardFlipped = !isCardFlipped;
+            if (isCardFlipped) {
+                cardInner.classList.add('rotate-y-180');
+            } else {
+                cardInner.classList.remove('rotate-y-180');
+            }
+        }
+
+        function nextCard() {
+            if (currentFlashcardIndex < currentFlashcardList.length - 1) {
+                currentFlashcardIndex++;
+                showFlashcard();
+            }
+        }
+
+        function prevCard() {
+            if (currentFlashcardIndex > 0) {
+                currentFlashcardIndex--;
+                showFlashcard();
+            }
+        }
+
+        function markStatus(isRemembered) {
+            const currentItem = currentFlashcardList[currentFlashcardIndex];
+            if (isRemembered) {
+                masteredIds.add(currentItem.id);
+                bookmarkIds.delete(currentItem.id);
+            } else {
+                masteredIds.delete(currentItem.id);
+                bookmarkIds.add(currentItem.id);
+            }
+            updateGlobalProgress();
+            renderPartsList();
+            nextCard();
+        }
+
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        function startPartQuiz(partId) {
+            document.getElementById('quizPartSelect').value = partId;
+            switchTab('quiz');
+        }
+
+        function setQuizCount(count) {
+            selectedQuizCount = count;
+            document.querySelectorAll('.quiz-count-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-academic-blue', 'bg-blue-50', 'text-academic-blue');
+                btn.classList.add('border-slate-200', 'text-slate-600');
+            });
+            const selectedBtn = document.getElementById(`count-${count}`);
+            if (selectedBtn) {
+                selectedBtn.classList.add('active', 'border-academic-blue', 'bg-blue-50', 'text-academic-blue');
+            }
+        }
+
+        function startQuiz() {
+            const partVal = document.getElementById('quizPartSelect').value;
+            let pool = (partVal === 'all') ? [...IDIOMS_DB] : IDIOMS_DB.filter(i => i.part === parseInt(partVal));
+
+            if (pool.length < 4) {
+                alert('クイズ用の選択肢を作成するために少なくとも4件以上の熟語データが必要です。');
+                return;
+            }
+
+            // Shuffle pool
+            pool = pool.sort(() => 0.5 - Math.random());
+            currentQuizQuestions = pool.slice(0, Math.min(selectedQuizCount, pool.length));
+
+            currentQuizIndex = 0;
+            currentQuizScore = 0;
+
+            document.getElementById('quizSetupCard').classList.add('hidden');
+            document.getElementById('quizResultArea').classList.add('hidden');
+            document.getElementById('quizPlayArea').classList.remove('hidden');
+
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const feedbackArea = document.getElementById('quizFeedbackArea');
+            feedbackArea.classList.add('hidden');
+
+            const item = currentQuizQuestions[currentQuizIndex];
+            const quizType = document.getElementById('quizTypeSelect').value;
+
+            document.getElementById('quizProgressText').textContent = `第 ${currentQuizIndex + 1} / ${currentQuizQuestions.length} 問`;
+            document.getElementById('quizScoreText').textContent = `スコア: ${currentQuizScore}`;
+            document.getElementById('quizCategoryTag').textContent = `Part ${item.part} • ${item.group}`;
+
+            // Generate 4 choices
+            let choices = [item];
+            let distractors = IDIOMS_DB.filter(i => i.id !== item.id).sort(() => 0.5 - Math.random()).slice(0, 3);
+            choices = choices.concat(distractors).sort(() => 0.5 - Math.random());
+
+            const questionText = (quizType === 'engToJap') ? item.idiom : item.meaning;
+            document.getElementById('quizQuestionText').textContent = questionText;
+
+            const optionsContainer = document.getElementById('quizOptionsContainer');
+            optionsContainer.innerHTML = choices.map(choice => {
+                const choiceLabel = (quizType === 'engToJap') ? choice.meaning : choice.idiom;
+                return `
+                    <button onclick="handleQuizAnswer(${choice.id})" class="quiz-opt-btn w-full p-4 text-left border-2 border-slate-200 hover:border-academic-blue hover:bg-blue-50/50 rounded-xl font-bold text-sm text-slate-800 transition flex justify-between items-center">
+                        <span>${choiceLabel}</span>
+                        <i class="fa-regular fa-circle text-slate-300"></i>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function speakCurrentQuiz() {
+            const item = currentQuizQuestions[currentQuizIndex];
+            speakText(item.idiom);
+        }
+
+        function handleQuizAnswer(selectedId) {
+            const currentItem = currentQuizQuestions[currentQuizIndex];
+            const isCorrect = (selectedId === currentItem.id);
+
+            const buttons = document.querySelectorAll('.quiz-opt-btn');
+            buttons.forEach(btn => btn.disabled = true);
+
+            const feedbackArea = document.getElementById('quizFeedbackArea');
+            const feedbackStatus = document.getElementById('quizFeedbackStatus');
+            const feedbackDetail = document.getElementById('quizFeedbackDetail');
+
+            if (isCorrect) {
+                currentQuizScore++;
+                masteredIds.add(currentItem.id);
+                bookmarkIds.delete(currentItem.id);
+
+                feedbackArea.className = "p-4 rounded-xl text-center font-bold text-sm space-y-2 bg-emerald-50 border border-emerald-200 text-emerald-800";
+                feedbackStatus.innerHTML = `<i class="fa-solid fa-circle-check text-xl mr-1"></i> 正解！`;
+            } else {
+                masteredIds.delete(currentItem.id);
+                bookmarkIds.add(currentItem.id);
+
+                feedbackArea.className = "p-4 rounded-xl text-center font-bold text-sm space-y-2 bg-rose-50 border border-rose-200 text-rose-800";
+                feedbackStatus.innerHTML = `<i class="fa-solid fa-circle-xmark text-xl mr-1"></i> 不正解...`;
+            }
+
+            feedbackDetail.textContent = `【正解】${currentItem.idiom} : ${currentItem.meaning}`;
+            feedbackArea.classList.remove('hidden');
+
+            updateGlobalProgress();
+        }
+
+        function nextQuizQuestion() {
+            currentQuizIndex++;
+            if (currentQuizIndex < currentQuizQuestions.length) {
+                renderQuizQuestion();
+            } else {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            document.getElementById('quizPlayArea').classList.add('hidden');
+            document.getElementById('quizResultArea').classList.remove('hidden');
+
+            document.getElementById('quizFinalScore').textContent = `Score: ${currentQuizScore} / ${currentQuizQuestions.length}`;
+        }
+
+        function resetQuizSetup() {
+            document.getElementById('quizResultArea').classList.add('hidden');
+            document.getElementById('quizSetupCard').classList.remove('hidden');
+        }
+
+        function renderBookmarks() {
+            const container = document.getElementById('bookmarkListContainer');
+            const bookmarkedItems = IDIOMS_DB.filter(i => bookmarkIds.has(i.id));
+
+            if (bookmarkedItems.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white rounded-2xl border border-slate-200 text-slate-400 space-y-2">
+                        <i class="fa-solid fa-bookmark text-4xl text-slate-200"></i>
+                        <p class="font-bold text-sm">要復習リストは空です</p>
+                        <p class="text-xs">暗記カードやクイズで「要復習」になった熟語がここに自動追加されます。</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = bookmarkedItems.map(item => `
+                <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-start">
+                            <span class="bg-blue-50 text-academic-blue text-[10px] font-bold px-2 py-0.5 rounded border border-blue-100">
+                                Part ${item.part} • ${item.group}
+                            </span>
+                            <button onclick="toggleBookmark(${item.id})" class="text-rose-500 hover:text-rose-700 text-sm">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <h4 class="text-lg font-bold text-slate-900">${item.idiom}</h4>
+                            <button onclick="speakText('${item.idiom}')" class="text-academic-blue hover:text-academic-darkblue text-xs">
+                                <i class="fa-solid fa-volume-high"></i>
+                            </button>
+                        </div>
+                        <p class="text-sm font-bold text-academic-blue">${item.meaning}</p>
+                        ${item.notes ? `<p class="text-xs text-slate-500 bg-slate-50 p-2 rounded">${item.notes}</p>` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleBookmark(id) {
+            if (bookmarkIds.has(id)) {
+                bookmarkIds.delete(id);
+            } else {
+                bookmarkIds.add(id);
+            }
+            updateGlobalProgress();
+            renderBookmarks();
+        }
+
+        function clearAllBookmarks() {
+            if (confirm('要復習リストをすべて消去しますか？')) {
+                bookmarkIds.clear();
+                updateGlobalProgress();
+                renderBookmarks();
+            }
+        }
+
+        function filterSearchIdioms() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const container = document.getElementById('searchResultsContainer');
+
+            const filtered = IDIOMS_DB.filter(i => 
+                i.idiom.toLowerCase().includes(query) || 
+                i.meaning.toLowerCase().includes(query) ||
+                (i.notes && i.notes.toLowerCase().includes(query))
+            );
+
+            document.getElementById('searchResultCount').textContent = `${filtered.length} 件の熟語が見つかりました`;
+
+            if (filtered.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400 space-y-1">
+                        <i class="fa-solid fa-magnifying-glass text-3xl text-slate-300 mb-2"></i>
+                        <p class="font-bold text-sm">該当する熟語が見つかりませんでした</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = filtered.map(item => {
+                const isBookmarked = bookmarkIds.has(item.id);
+                const isMastered = masteredIds.has(item.id);
+
+                return `
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex flex-col justify-between">
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center">
+                                <span class="bg-slate-100 text-slate-600 text-[10px] font-bold px-2 py-0.5 rounded">
+                                    Part ${item.part} • ${item.group}
+                                </span>
+                                <div class="flex items-center space-x-2">
+                                    ${isMastered ? `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded">習得済み</span>` : ''}
+                                    <button onclick="toggleBookmark(${item.id}); filterSearchIdioms();" class="${isBookmarked ? 'text-rose-500' : 'text-slate-300 hover:text-slate-500'} text-sm">
+                                        <i class="fa-solid fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center space-x-2">
+                                <h4 class="text-lg font-bold text-slate-900">${item.idiom}</h4>
+                                <button onclick="speakText('${item.idiom}')" class="text-academic-blue hover:text-academic-darkblue text-xs">
+                                    <i class="fa-solid fa-volume-high"></i>
+                                </button>
+                            </div>
+
+                            <p class="text-sm font-bold text-academic-blue">${item.meaning}</p>
+                            ${item.notes ? `<p class="text-xs text-slate-500 bg-slate-50 p-2 rounded">${item.notes}</p>` : ''}
+                            ${item.example ? `<p class="text-xs italic text-slate-600">"${item.example}"</p>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+    </script>
 </body>
 </html>
